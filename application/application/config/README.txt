@@ -1,0 +1,3 @@
+In order to prevent NCLFMinecraft.org's security from being compromised, the codeigniter configuration
+directory is NOT INCLUDED in the open source of the site.  CodeIgniter's configuration directory can
+be downloaded from its website.
