@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+/*
+ * CSS For navigation template
+ * @author AJ Fite
+ */
+nav {
+	display:block;
+	background-color: red;
+	width:900px;
+	height:20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+nav ul {
+	margin:0;
+	padding:0;
+}
+
+nav ul li {
+	margin:0;
+	padding:0;
+	display: inline-block;
+}

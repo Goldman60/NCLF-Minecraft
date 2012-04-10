@@ -1,0 +1,1 @@
+<div id="left-body"><p>I am the index page</p></div>
