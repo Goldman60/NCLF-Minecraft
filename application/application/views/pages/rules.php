@@ -14,12 +14,62 @@
 
 <div id="expandedRules">
 	<h3>Expanded Server Rules and Terms of Service</h3>
-	<h4 id="Section1"><span class="expand">[+]</span> Section I - Griefing, Stealing, Etc.</h4>
-	<h4 id="Section2"><span class="expand">[+]</span> Section II - Authority</h4>
-	<h4 id="Section3"><span class="expand">[+]</span> Section III - Structures and Free Build</h4>
-	<h4 id="Section4"><span class="expand">[+]</span> Section IV - General Definition of Trolling and Server Conduct Rules</h4>
-	<h4 id="Section5"><span class="expand">[+]</span> Section V - Regarding this Server Being Private</h4>
-	<h4 id="Section6"><span class="expand">[+]</span> Section IV - Client Side Mods</h4>
-	<h4 id="Section7"><span class="expand">[+]</span> Section VII - General Disclaimers</h4>
-	<h4 id="Section8"><span class="expand">[+]</span> Section VIII - Restricted Areas</h4>
-</div></div><?php echo "\r\n"; ?>
+	<div id="Section1">
+		<h4><img onclick="show(1)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section I - Griefing, Stealing, Etc.</h4>
+		<ol id="sectionol1">
+			<li>Test Item</li>
+		</ol>
+	</div>
+	
+	<div id="Section2">
+		<h4><img onclick="show(2)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section II - Authority</h4>
+		<ol>
+			<li>Test Item</li>
+		</ol>
+	</div>
+	
+	<div id="Section3">
+		<h4><img onclick="show(3)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section III - Structures and Free Build</h4>
+		<ol>
+			<li>Test Item</li>
+		</ol>
+	</div>
+	
+	<div id="Section4">
+		<h4><img onclick="show(4)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section IV - General Definition of Trolling and Server Conduct Rules</h4>
+		<ol>
+			<li>Test Item</li>
+		</ol>
+	</div>
+	
+	<div id="Section5">
+		<h4><img onclick="show(5)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section V - Regarding this Server Being Private</h4>
+		<ol>
+			<li>Test Item</li>
+		</ol>
+	</div>
+	
+	<div id="Section6">
+		<h4><img onclick="show(6)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section IV - Client Side Mods</h4>
+		<ol>
+			<li>Test Item</li>
+		</ol>
+	</div>
+	
+	<div id="Section7">
+		<h4><img onclick="show(7)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section VII - General Disclaimers</h4>
+		<ol>
+			<li>Test Item</li>
+		</ol>
+	</div>
+	
+	<div id="Section8">
+		<h4><img onclick="show(8)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section VIII - Restricted Areas</h4>
+		<ol>
+			<li>Test Item</li>
+		</ol>
+	</div>
+
+</div>
+
+</div><?php echo "\r\n"; ?>
