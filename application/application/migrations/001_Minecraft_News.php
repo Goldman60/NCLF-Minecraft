@@ -6,6 +6,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Copyright (C) 2012  A.J. Fite
  */
 
+/*
+ * there is an error in this scrip corrected in migration 3
+ */
+
 class Migration_Minecraft_News extends CI_Migration {
 	
 	public function up() {
