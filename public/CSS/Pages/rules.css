@@ -3,6 +3,11 @@
 #expandedRules ol {
 	visibility: collapse;
 	display: none;
+	list-style-type: lower-roman;
+}
+
+#expandedRules ol li ol {
+	list-style-type: lower-latin;
 }
 
 #expandedRules img {
