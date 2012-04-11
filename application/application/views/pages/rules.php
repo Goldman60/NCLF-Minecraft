@@ -17,14 +17,33 @@
 	<div id="Section1">
 		<h4><img onclick="show(1)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section I - Griefing, Stealing, Etc.</h4>
 		<ol id="sectionol1">
-			<li>Test Item</li>
+			<li>Griefing is generally defined on the Minecraft Wiki, this server uses the following definition as griefing:<?php echo br(2); ?>
+				Griefing is the act of ruining large or very noticeable portions of other people's creations on the server, 
+				breaking any portion of a players creation without repairing it, or putting up structures with the intent to 
+				offend or make a statement to a person that violates section III.  Accidental creeper damage should be reported 
+				but is not considered griefing.  Making improvements to a structure is not griefing, but must be removed if the 
+				original owner objects.<?php echo br(2); ?>
+				While not necessarily griefing, building large structures in the airspace over someone else's structure will 
+				likely result in your structure getting removed.  Players are encouraged to ask for permission when unsure to be safe,  
+				Moderators are instructed to store all materials from removed structures to later be claimed by the structure's builder.</li>
+			<li>Stealing is prohibited.  If you didn't place the chest and you remove anything from it, you are stealing.  
+				The only exception to this rule is with chests that are clearly and purposefully marked as public.  If you have ANY 
+				doubt that the chest is public DO NOT touch it.</li>
+			<li>Be aware <span class="underline">all</span> player actions, including but not limited to block breaking, door interaction, 
+				chest interaction, chat, and block placing are logged.</li>
+			<li>I don't know who you are. I don't know what you want. What I do have are a very particular set of tools. Tools that make 
+				me a nightmare for people like you. If you don't grief the server, that'll be the end of it. I will not look for you, 
+				I will not pursue you. But if you do, I will look for you, I will find you, and I will ban you.</li>
 		</ol>
 	</div>
 	
 	<div id="Section2">
 		<h4><img onclick="show(2)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section II - Authority</h4>
 		<ol>
-			<li>Test Item</li>
+			<li>Final and complete Administrative, Judicial, and Legislative authority lies in the possession of the server administrator.</li>
+			<li>Moderators are given the authority to mute in chat and temporarily and/or permanently ban any user that blatantly ignores server rules.</li>
+			<li>Moderators can give a warning before banning a player at their own discretion, but are not required to.</li>
+			<li>Bans can only be overturned by the server Administrator.  Moderators do not have the power to unban players.</li>
 		</ol>
 	</div>
 	

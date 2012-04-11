@@ -10,6 +10,7 @@ if($connection):?>
 	<p><span>Gametype:</span> <?php echo $serverstats['GameType']; ?></p>
 	<p><span>Minecraft Version:</span> <?php echo $serverstats['Version']; ?></p>
 	<p><span>Server Mod API:</span> <?php echo $serverstats['Software']; ?></p>
+	<p class="MCMA">This server proudly runs on McMyAdmin Professional</p>
 </div>
 
 <div id="onlinePlayers">

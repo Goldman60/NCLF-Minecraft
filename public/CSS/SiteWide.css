@@ -1,7 +1,25 @@
 @CHARSET "UTF-8";
 
 html,body {
-	font-family: Arial, Helvetica,sans-serif;
+	font-family: Arial, Helvetica,sans-serif !important;
 	margin:0;
 	padding:0;
+}
+
+.underline {
+	text-decoration:underline;
+}
+
+/* Fuck you IE */
+a img {
+	border:none;
+}
+
+/* Governs site wide links */
+a:link, a:visited {
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
 }
