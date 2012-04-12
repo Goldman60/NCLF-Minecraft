@@ -8,6 +8,8 @@
 
 #expandedRules ol li ol {
 	list-style-type: lower-latin;
+	visibility:inherit;
+	display:inherit;
 }
 
 #expandedRules img {

@@ -44,13 +44,46 @@
 			<li>Moderators are given the authority to mute in chat and temporarily and/or permanently ban any user that blatantly ignores server rules.</li>
 			<li>Moderators can give a warning before banning a player at their own discretion, but are not required to.</li>
 			<li>Bans can only be overturned by the server Administrator.  Moderators do not have the power to unban players.</li>
+			<li>All and any decisions by moderators can be appealed to an administrator via the Facebook group, Facebook Chat, or Skype.</li>
+			<li>Moderators are given full spawning abilities, these abilities should be used to maintain and build server infrastructure (or 
+				build cool things).  They are <span class="underline">strictly prohibited</span> from using these abilities to spawn items for players, build structures for 
+				individual players, or using the abilities in any way that diminishes the survival feel of the server.  Moderators are to 
+				destroy any and all spawned materials that they do not use, or place the materials in chests that they must monitor to make 
+				sure items are not stolen.  Failure to reasonably prevent the theft of spawned items through close monitoring or destruction will be punished.</li>
+			<li>The decisions of the server administrator are final and can be appealed to nobody.</li>
 		</ol>
 	</div>
 	
 	<div id="Section3">
 		<h4><img onclick="show(3)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section III - Structures and Free Build</h4>
 		<ol>
-			<li>Test Item</li>
+			<li>This is a free build server except as stated otherwise in this section.</li>
+			<li>The erecting of offensive structures and signs is prohibited (with certain exceptions)<?php echo br(2); ?>
+				In order to be considered offensive a structure or sign must threaten a specific reasonable person or 
+				offend and/or threaten a group of reasonable persons.<?php echo br(2); ?>
+				<ul>
+					<li>For purposes of this section, a "reasonable person" is a reasonable person who is a member of or 
+						distinguished by one of the following: race, color, religion, ancestry, national origin, gender, 
+						or sexual orientation, or who has a mental, physical, or sensory handicap.</li>
+					<li>For purposes of this section, "Offensive"is defined as being remarks which are generally 
+						considered by society as a whole to be offensive to the specific groups listed in the "reasonable person" 
+						explanation.</li>
+					<li>For purposes of this section, "Threaten" is defined as communicating, directly or indirectly, the intent to:
+						<ul>
+							<li>Cause bodily injury immediately or in the future to the person threatened or to any other person.</li>
+							<li>Cause physical damage immediately or in the future to the property of a person threatened or that of any other person.</li>
+						</ul></li>
+				</ul>
+				<?php echo br(1); ?>
+				Nothing in this sub-section confers or expands any rights or protections to any group or class identified under this sub-section, beyond those rights or 
+				protections that exist under the other sections of server law.  Nothing in this sub-section exempts said groups from escaping Section I (or any other section) of server law.</li>
+			<li>Sexually explicit material and giant swear words are generally prohibited.  Exception if they are totally and completely hidden from view from a player walking around and COMPLETELY 
+				INVISIBLE to the DynMap (EG: in a house).</li>
+			<li>Anything that violates the rules laid out in Section I is in violation.</li>
+			<li>Interpretation of these rules is at the Administrator's discretion, the administrator can decide any building is in some violation of the principles of the server and have it removed 
+				regardless of what it is, or decide to keep a structure which may be in violation.</li>
+			<li>Structures or signs that indicate a clear and present danger to a person on the server or the general public will be reported to the police pursuant to Section VII Subsection A.</li>
+			<li>General Note: This section is not enforced very often, and generally you don't need to worry about it.</li>
 		</ol>
 	</div>
 	
@@ -76,9 +109,12 @@
 	</div>
 	
 	<div id="Section7">
-		<h4><img onclick="show(7)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section VII - General Disclaimers</h4>
+		<h4><img onclick="show(7)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section VII - General Disclaimers and Notices, Privacy Policy</h4>
 		<ol>
-			<li>Test Item</li>
+			<li>This server is hosted in the State of Washington of the United States of America and as such must comply with any state and federal law as defined in the US Code and the Revised Code of Washington.  The server administrator may access or disclose information about you, including the content of your communications, IP Addresses, and other personally identifiable information, in order to: (a) comply with the law or respond to lawful requests or legal process; (b) protect the rights or property of NCLF and our associates, including the enforcement of any agreements or policies governing your use of the services; or (c) act on a good faith belief that such access or disclosure is necessary to protect the personal safety of server users, the server itself, or the public.  These are the only times your information may be disclosed intentionally.</li>
+			<li>Be aware that all chat, public and private, is logged.  However this chat will not be specifically monitored, inspected, or released intentionally except in the cases stated above.  While this chat is not actively monitored, it is possible (however not particularly likely) that chat could be intercepted while the administration is carrying out server maintenance and debugging, as the chat is visible in plain text on the console and in the debug logs.</li>
+			<li></li>
+			<li></li>
 		</ol>
 	</div>
 	

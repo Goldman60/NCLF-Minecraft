@@ -57,7 +57,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = 'C:\inetpub\Minecraft 2\application\system';
+	$system_path = 'C:\inetpub\NCLFMinecraft.org\nightly\application\system';
 
 /*
  *---------------------------------------------------------------
@@ -73,7 +73,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'C:\inetpub\Minecraft 2\application\application';
+	$application_folder = 'C:\inetpub\NCLFMinecraft.org\nightly\application\application';
 
 /*
  * --------------------------------------------------------------------
