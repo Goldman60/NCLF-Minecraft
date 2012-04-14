@@ -46,17 +46,18 @@ class News extends CI_Controller {
 	public function create() {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-				
+
 		$data['title'] = 'create a news item';
 		$data['style'] = array('SiteWide','Header','Navigation','News','Footer','Body');		
+		$data['user'] = $this->ion_auth->user()->result();
 		
 		//FIXME: Author field and date
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('text', 'text', 'required');
 		
-		if($this->ion_auth->is_admin()) {				
-			if($this->form_validation->run() === FALSE) {
-				$this->load->view('templates/header', $data);
+		if($this->ion_auth->is_admin()) {		
+			if($this->form_validation->run() === FALSE) {				
+				$this->load->view('templates/header', $data);				
 				$this->load->view('templates/navigation',$data);
 				$this->load->view('templates/Body/start');
 				$this->load->view('news/create');
@@ -78,6 +79,7 @@ class News extends CI_Controller {
 	
 	public function feed() {
 		$this->load->helper('xml');
+		$this->load->helper('date');
 		
 		$data['feed_name'] = 'NCLF Minecraft News';
 		$data['encoding'] = 'utf-8';
