@@ -32,7 +32,7 @@ class Pages extends CI_Controller {
 		
 		$connection = $this->MC_stats_model->Connect('localhost');
 		
-		if($connection) {
+		if($connection === TRUE) {
 			// Connection is good
 			$data['PlayerList'] = $this->MC_stats_model->GetPlayers();
 			$data['serverstats'] = $this->MC_stats_model->GetInfo();
@@ -69,14 +69,10 @@ class Pages extends CI_Controller {
 			$this->load->view('pages/'.$page, $data);
 		}
 		
-		//If page is not the stats page then load the sidebar error
-		if($page != stats && $data['connection']) {
-			$this->load->view('templates/sidebar');
-		} elseif(!$data['connection']) {
-			$this->load->view('templates/Error/Sidebar-NoServer');
+		//If page is not the stats page then load the sidebar
+		if($page != 'stats') {
 			$this->load->view('templates/sidebar');
 		}
-		
 		//End the body
 		$this->load->view('templates/body/end', $data);
 		//footer

@@ -1,5 +1,6 @@
 <div id="right-side">
-	<div class="player-list">
+	<?php if($connection): //The server communicated properly?>
+	<div id="player-list">
 		<h2>Players Online</h2>
 		<p class="small-players"><?php echo $serverstats['Players']; ?>/<?php echo $serverstats["MaxPlayers"]; ?></p>
 		<ul>
@@ -10,7 +11,7 @@
 			natcasesort($PlayerList);
 			foreach ($PlayerList as $username): 
 			?>
-			<li><?php echo $username; ?></li>
+			<li><img class="playerFace" src="/dynmap/tiles/faces/16x16/<?php echo $username; ?>.png" alt="<?php echo $username; ?>'s Player Face" /> <?php echo $username; ?></li>
 			<?php 
 			endforeach;
 			endif; 
@@ -18,6 +19,15 @@
 			<?php //FIXME: Error needs to occur, maybe in controller redirect to error template? ?>
 		</ul>
 	</div>
+	<?php else: //If no connection display this ?>
+	
+	<div class="sidebar-com-error">
+		<h2>Communication Error</h2>
+		<p>We had trouble communicating with the Minecraft Server. You may need to refresh your browser or the server may be down.</p>
+		<p class="more-error-info">Error Code <?php echo $ErrorCode; ?> <?php echo $Error; ?></p>	
+	</div>
+	
+	<?php endif; ?>
 	
 	<div id="Donate">
 		<h2>Donate</h2>

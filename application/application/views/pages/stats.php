@@ -27,7 +27,7 @@ if($connection):?>
 			foreach ($PlayerList as $username): 
 		?>
 		
-		<li><?php echo $username; ?></li>
+		<li><img class="playerFace" src="/dynmap/tiles/faces/16x16/<?php echo $username; ?>.png" alt="<?php echo $username; ?>'s Player Face" /> <?php echo $username; ?></li>
 		<?php 
 			endforeach;
 			endif; 

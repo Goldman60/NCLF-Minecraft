@@ -8,9 +8,10 @@
 }
 
 #left-body {
-	width:690px;
+	width:679px;
 	float:left;
 	min-height:350px;
+	padding-right:5px;
 }
 
 #full-body {

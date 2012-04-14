@@ -20,7 +20,7 @@ class News extends CI_Controller {
 		
 		$connection = $this->MC_stats_model->Connect('localhost');
 		
-		if($connection) {
+		if($connection === TRUE) {
 			// Connection is good
 			$data['PlayerList'] = $this->MC_stats_model->GetPlayers();
 			$data['serverstats'] = $this->MC_stats_model->GetInfo();
@@ -48,12 +48,7 @@ class News extends CI_Controller {
 		$this->load->view('templates/navigation',$data);
 		$this->load->view('templates/Body/start');
 		$this->load->view('news/index', $data);
-		if($data['connection']) {
-			$this->load->view('templates/sidebar');
-		} else {
-			$this->load->view('templates/Error/Sidebar-NoServer');
-			$this->load->view('templates/sidebar');
-		}
+		$this->load->view('templates/sidebar');
 		$this->load->view('templates/Body/end');
 		$this->load->view('templates/footer', $data);
 	}
