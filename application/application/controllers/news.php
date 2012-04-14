@@ -94,8 +94,14 @@ class News extends CI_Controller {
 				$this->load->view('templates/footer');
 			} else {
 				$this->news_model->set_news();
-				//FIXME: Better success page
+				$this->news_model->email_news();
+				
+				$this->load->view('templates/header', $data);				
+				$this->load->view('templates/navigation',$data);
+				$this->load->view('templates/Body/start');
 				$this->load->view('news/success');
+				$this->load->view('templates/Body/end');
+				$this->load->view('templates/footer');
 			}
 		} elseif($this->ion_auth->logged_in()) {
 			//FIXME: Error page necessary
