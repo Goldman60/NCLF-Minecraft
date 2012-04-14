@@ -20,6 +20,7 @@ class News extends CI_Controller {
 		
 		$connection = $this->MC_stats_model->Connect('localhost');
 		
+		//Check server connection
 		if($connection === TRUE) {
 			// Connection is good
 			$data['PlayerList'] = $this->MC_stats_model->GetPlayers();
