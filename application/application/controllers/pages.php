@@ -74,6 +74,7 @@ class Pages extends CI_Controller {
 			$this->load->view('templates/sidebar');
 		} elseif(!$data['connection']) {
 			$this->load->view('templates/Error/Sidebar-NoServer');
+			$this->load->view('templates/sidebar');
 		}
 		
 		//End the body

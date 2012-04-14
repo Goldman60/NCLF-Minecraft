@@ -8,6 +8,7 @@ class News extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 		$this->load->model('news_model');
+		$this->load->model('MC_stats_model');
 		$this->load->library('ion_auth');
 		$this->load->library('session');
 	}
@@ -15,12 +16,44 @@ class News extends CI_Controller {
 	public function index() {
 		$data['news'] = $this->news_model->get_news();
 		$data['title'] = 'News archive';
-		$data['style'] = array('SiteWide','Header','Navigation','News','Footer','Body');
+		$data['style'] = array('SiteWide','Header','Navigation','News','Footer','Body','RightSide');
+		
+		$connection = $this->MC_stats_model->Connect('localhost');
+		
+		if($connection) {
+			// Connection is good
+			$data['PlayerList'] = $this->MC_stats_model->GetPlayers();
+			$data['serverstats'] = $this->MC_stats_model->GetInfo();
+			$data['connection'] = TRUE;
+		} else {
+			// Handles Connection errors
+			$data['PlayerList'] = FALSE;
+			$data['serverstats'] = FALSE;
+			$data['connection'] = FALSE;
+			switch($connection) {
+				case(-3): {
+					$data['Error'] = "Failed to receive challenge.";
+				}
+				case(-2): {
+					$data['Error'] = "Failed to receive status.";
+				}
+				case(-1): {
+					$data['Error'] = "Can't open connection.";
+				}
+			}
+			$data['ErrorCode'] = $connection;
+		}
 		
 		$this->load->view('templates/header',$data);
 		$this->load->view('templates/navigation',$data);
 		$this->load->view('templates/Body/start');
 		$this->load->view('news/index', $data);
+		if($data['connection']) {
+			$this->load->view('templates/sidebar');
+		} else {
+			$this->load->view('templates/Error/Sidebar-NoServer');
+			$this->load->view('templates/sidebar');
+		}
 		$this->load->view('templates/Body/end');
 		$this->load->view('templates/footer', $data);
 	}

@@ -90,21 +90,45 @@
 	<div id="Section4">
 		<h4><img onclick="show(4)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section IV - General Definition of Trolling and Server Conduct Rules</h4>
 		<ol>
-			<li>Test Item</li>
+			<li>No Trolling or deliberate disruption of discussion. Inflammatory chat is generally unacceptable and may be moderated. Inflammatory, or unnecessarily argumentative messages, or signs will be considered trolling. Extended debate with moderators or admins over their decisions with regard to moderation of the server is considered trolling. Do not subvert conversation. It is acceptable to state concern for how a particular server policy, performance, or procedure does or does not meet the expectation of a particular member, but it is not acceptable to use this server or its services in an attempt to broadly organize or incite members en masse, to leave the server, undertake legal (or illegal) action or otherwise disrupt the normal operation of the server.<?php echo br(2); ?>
+				It is fair to state disagreement with facts or conclusions that another member has stated or a moderator has ruled, but dissent must be expressed in an objective, and reasoned manner. Treat others with the respect you wish to receive.</li>
+			<li>Command spamming or abuse that causes the server to become slow or unresponsive, or that negatively affects the enjoyment of players on the server is prohibited.</li>
+			<li>Chat messages which present a clear and present danger to a person on the server or the general public will be reported to police pursuant to Section VII Subsection A.</li>
+			<li>If you engage a moderator in battle and somehow kill them, their inventory is yours BUT you must return any and all spawned items that are normally impossible for a regular player to obtain.</li>
 		</ol>
 	</div>
 	
 	<div id="Section5">
 		<h4><img onclick="show(5)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section V - Regarding this Server Being Private</h4>
 		<ol>
-			<li>Test Item</li>
+			<li>This is a controlled private server, all new players must agree to abide by these rules and be whitelisted by the server admin.</li>
+			<li>In order to identify members your first and last name will be made available to members of the server.  In no situation should this data, or will this data be shared with those outside of the Minecraft server for any reason except as stated in Section VII.</li>
 		</ol>
 	</div>
 	
 	<div id="Section6">
 		<h4><img onclick="show(6)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section IV - Client Side Mods</h4>
 		<ol>
-			<li>Test Item</li>
+			<li>A client side mod is any modification you have made to Minecraft on your own computer.</li>
+			<li>Client side mods with unfair effects on yours and others play are prohibited. Such mods include but are not limited to mods that allow you to do things such as:
+				<ul>
+					<li>X-Ray</li>
+					<li>No Clipping (Flying)</li>
+					<li>Speed modification</li>
+					<li>Automation of your player (macros, automatic or semi automatic robots)</li>
+					<li>Smart moving (climbing)</li>
+				</ul>
+				You may have these mods installed (I have no way to tell), but their use on the server is prohibited.  There are anti-cheating systems running on the server that can detect their use.</li>
+			<li>Certain client side mods that do not effect play on the server are allowed to be used. Examples of these kind of mods include (but are not limited to):
+				<ul>
+					<li>Texture packs! (Just keep in mind that other people are likely using the default pack)</li>
+					<li><a href="http://www.minecraftforum.net/topic/123409-123-wdmods-creepers-sneak-and-chat/">Improved Chat</a></li>
+					<li><a href="http://www.minecraftforum.net/topic/52079-mrmmods-betterlightgrass-simplemap-181/">Better light</a></li>
+					<li><a href="http://www.minecraftforum.net/topic/482147-125-apr08-reis-minimap-v30-04/">Minimap</a> (unless the mini map reveals ores, dungeons, or other normally hidden features)</li>
+					<li><a href="http://www.minecraftforum.net/topic/120261-125-glsl-shaders-dof-bump-mapping-waving-wheat-dynamic-shadows-and-more/">HLSL Shaders</a></li>
+				</ul>
+			</li>
+			<li>The server will not put in place any system that requires the user to download a client-side mod to enjoy until <a href="http://www.reddit.com/r/Minecraft/comments/s0pqt/i_am_nathan_adams_aka_dinnerbone_developer_of/c4a5w71?context=1">such a time that the Minecraft Modding API allows us to do this seamlessly</a>.</li>
 		</ol>
 	</div>
 	
@@ -113,15 +137,36 @@
 		<ol>
 			<li>This server is hosted in the State of Washington of the United States of America and as such must comply with any state and federal law as defined in the US Code and the Revised Code of Washington.  The server administrator may access or disclose information about you, including the content of your communications, IP Addresses, and other personally identifiable information, in order to: (a) comply with the law or respond to lawful requests or legal process; (b) protect the rights or property of NCLF and our associates, including the enforcement of any agreements or policies governing your use of the services; or (c) act on a good faith belief that such access or disclosure is necessary to protect the personal safety of server users, the server itself, or the public.  These are the only times your information may be disclosed intentionally.</li>
 			<li>Be aware that all chat, public and private, is logged.  However this chat will not be specifically monitored, inspected, or released intentionally except in the cases stated above.  While this chat is not actively monitored, it is possible (however not particularly likely) that chat could be intercepted while the administration is carrying out server maintenance and debugging, as the chat is visible in plain text on the console and in the debug logs.</li>
-			<li></li>
-			<li></li>
+			<li>The server administrator reserves the right to bend, break, or ignore server rules at his own discretion until such a time that the universe collapses upon itself and Minecraft ceases to exist.</li>
+			<li>Typos, grammar, and general errors in this document mean nothing as the Administrator has the right to do whatever he damn well pleases to you.</li>
 		</ol>
 	</div>
 	
 	<div id="Section8">
 		<h4><img onclick="show(8)" src="Assets/Images/Expand.png" alt="expand/collapse"> Section VIII - Restricted Areas</h4>
 		<ol>
-			<li>Test Item</li>
+			<li>Venturing into areas marked as restricted by a server admin can be punishable if you disrupt the workings of the areas. This does not mean you will receive a punishment. Most areas are enterable as long as you respect the rules below.</li>
+			<li>Restricted areas include, but are not limited to the following, special rules are also noted:
+				<ul>
+					<li>Rail Terminals, Stations, And tracks that are part of the MTA Rail Network.
+						<ul>
+							<li>The restricted portions of these areas are generally well signed.</li>
+							<li>If you accidentally tunnel into such an area, fix the damage.  If you cannot fix the damage immediately notify server administration (admins/mods).</li>
+						</ul>
+					</li>
+					<li>Any area/chest sealed with bedrock.
+						<ul>
+							<li>These areas generally have sign on them denoting that they were sealed by a server administrator.</li>
+						</ul>
+					</li>
+					<li>Any area/chest that is officially sealed by a server moderator.
+						<ul>
+							<li>These should carry a sign that contains the moderator's user name and/or title.</li>
+							<li>May be sealed by bedrock</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</ol>
 	</div>
 
