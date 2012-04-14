@@ -1,7 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * Part of the Ion_auth library
- */
+
 class Auth extends CI_Controller {
 
 	function __construct()
@@ -49,8 +47,7 @@ class Auth extends CI_Controller {
 	function login()
 	{
 		$this->data['title'] = "Login";
-		$this->data['style'] = array('SiteWide','Header','Navigation','Body','Footer','RightSide','pages/'.$page); //$page is for a page specific CSS sheet
-		
+
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -87,11 +84,8 @@ class Auth extends CI_Controller {
 				'id' => 'password',
 				'type' => 'password',
 			);
-			
-			$this->load->view('templates/header', $this->data);
-			$this->load->view('templates/navigation', $this->data);
+
 			$this->load->view('auth/login', $this->data);
-			$this->load->view('templates/footer', $this->data);
 		}
 	}
 
