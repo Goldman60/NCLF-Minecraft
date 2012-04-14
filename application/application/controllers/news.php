@@ -99,10 +99,10 @@ class News extends CI_Controller {
 			}
 		} elseif($this->ion_auth->logged_in()) {
 			//FIXME: Error page necessary
-			redirect('/error/notadmin.html');
+			redirect('/error/notadmin', 'refresh');
 		} else {
 			//FIXME: You must be logged in error
-			redirect('/auth/login.html');
+			redirect('/auth/login', 'refresh');
 		} 
 	}
 	

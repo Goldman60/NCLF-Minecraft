@@ -21,7 +21,6 @@
 }
 
 #right-side #player-list ul li {
-
 }
 
 #right-side #player-list img.playerFace {
@@ -31,4 +30,32 @@
 	margin:0 0 2px 0;
 	padding:0;
 	font-size:12px;
+}
+
+/* ERROR */
+#sidebar-com-error {
+	background-color:#FFFF99;
+	border:3px solid #FF3333;
+	margin-top:4px;
+}
+
+#sidebar-com-error h2 {
+	margin:0 0 2px 0;
+	border-bottom: 3px solid #FF3333;
+	display:block;
+	padding:0;
+	font-size:16px;
+	padding:1px 3px;
+}
+
+#sidebar-com-error p.message {
+	margin:0;
+	padding:3px;
+	font-size:13px;
+}
+
+#sidebar-com-error p.more-error-info {
+	margin:0;
+	font-size:11px;
+	padding:0 3px 3px 3px;
 }
