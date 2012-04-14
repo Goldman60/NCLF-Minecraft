@@ -11,6 +11,8 @@ class News_model extends CI_Model {
 
 	public function get_news($slug = FALSE,$limit = NULL) {
 		if($slug === FALSE) {
+			//Returns newest news first
+			$this->db->order_by('date','desc');
 			$query = $this->db->get('news');
 			return $query->result_array();
 		}

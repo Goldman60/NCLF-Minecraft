@@ -1,7 +1,4 @@
 <?php 
-//Patches news order
-$news = array_reverse($news);
-//FIXME: News queries in wrong order? Returns oldest to newest rather than newest to a certain number of oldest
 foreach($news as $news_item): ?>
 
 <h2><?php echo $news_item['title']; ?></h2>
