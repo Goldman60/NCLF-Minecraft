@@ -5,6 +5,11 @@
 	<li>Initial Release</li>
 	<li><a href="https://github.com/Goldman60/NCLF-Minecraft/issues?milestone=1&state=closed">Milestone on GitHub</a></li>
 </ul>
+<h3>1.01 - Maintenance Update</h3>
+<ul>
+	<li>Feature bugg fixes from 1.1 release</li>
+	<li><a href="https://github.com/Goldman60/NCLF-Minecraft/issues?milestone=3&state=open">Mileston on Github</a></li>
+</ul>
 <h3>1.1 - Currently in Nightly</h3>
 <ul>
 	<li><a href="http://nighly.nclfminecraft.org">Bleeding Edge Code - see it as its programmed</a></li>
