@@ -94,7 +94,7 @@ class News extends CI_Controller {
 				$this->load->view('templates/footer');
 			} else {
 				$this->news_model->set_news();
-				$this->news_model->email_news();
+				$this->news_model->email_news($data);
 				
 				$this->load->view('templates/header', $data);				
 				$this->load->view('templates/navigation',$data);
@@ -104,10 +104,8 @@ class News extends CI_Controller {
 				$this->load->view('templates/footer');
 			}
 		} elseif($this->ion_auth->logged_in()) {
-			//FIXME: Error page necessary
 			redirect('/error/notadmin', 'refresh');
 		} else {
-			//FIXME: You must be logged in error
 			redirect('/auth/login', 'refresh');
 		} 
 	}
