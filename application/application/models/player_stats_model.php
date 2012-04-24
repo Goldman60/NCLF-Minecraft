@@ -4,11 +4,15 @@ class Player_stats_model extends CI_Model {
 	private $_playerUUID;
 	private $_playerRow;
 
-	function __construct($playerUUID) {
+	function __construct() {
+		parent::__construct();
 		$this->load->database();
 		$this->load->library('stats_utilities');
+	}
+	
+	function initialise($playerUUID) {
 		$this->_playerUUID = $playerUUID;
-		$this->popCheck();
+		$this->popCheck(); 
 	}
 
 	private function popCheck() {

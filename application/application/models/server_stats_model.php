@@ -20,8 +20,11 @@ class Server_stats_model extends CI_Model {
 				FROM blocks'));
 	}
 	 
+	//DEPRECATED
 	public function getPlayer($uuid) {
-		return new Player_stats_model($uuid);
+		$player = new Player_stats_model();
+		$player->initialise($uuid);
+		return $player;
 	}
 
 	public function getAllPlayers() {

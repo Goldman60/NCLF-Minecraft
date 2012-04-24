@@ -38,7 +38,11 @@ class Statistics extends CI_Controller {
 	}
 	
 	public function player($uuid) {	
+		echo 'Player stats uuid ';
+		echo $uuid;
 		$this->load->model('server_stats_model');
+		$this->load->model('player_stats_model');
+		
 		$data['playerData'] = $this->server_stats_model->getPlayer($uuid);
 		
 		var_dump($data);
