@@ -17,39 +17,15 @@ class News extends CI_Controller {
 		$data['news'] = $this->news_model->get_news();
 		$data['title'] = 'News archive';
 		$data['style'] = array('SiteWide','Header','Navigation','News','Footer','Body','RightSide');
+		$data['script'] = array();
 		
-		$connection = $this->MC_stats_model->Connect('localhost');
-		
-		//Check server connection
-		if($connection === TRUE) {
-			// Connection is good
-			$data['PlayerList'] = $this->MC_stats_model->GetPlayers();
-			$data['serverstats'] = $this->MC_stats_model->GetInfo();
-			$data['connection'] = TRUE;
-		} else {
-			// Handles Connection errors
-			$data['PlayerList'] = FALSE;
-			$data['serverstats'] = FALSE;
-			$data['connection'] = FALSE;
-			switch($connection) {
-				case(-3): {
-					$data['Error'] = "Failed to receive challenge.";
-				}
-				case(-2): {
-					$data['Error'] = "Failed to receive status.";
-				}
-				case(-1): {
-					$data['Error'] = "Can't open connection.";
-				}
-			}
-			$data['ErrorCode'] = $connection;
-		}
+		$data['ServerConn'] = $this->MC_stats_model->GetDataForPages();
 		
 		$this->load->view('templates/header',$data);
 		$this->load->view('templates/navigation',$data);
 		$this->load->view('templates/Body/start');
 		$this->load->view('news/index', $data);
-		$this->load->view('templates/sidebar');
+		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/Body/end');
 		$this->load->view('templates/footer', $data);
 	}

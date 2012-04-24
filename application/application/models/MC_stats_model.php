@@ -184,4 +184,38 @@ class MC_stats_model extends CI_Model {
 		return SubStr( $Data, 5 );
 	}
 	
+	/**
+	 * Reimplimentation of the function to get the server info
+	 * @param sever to connect to $conn (defaults to localhost)
+	 */
+	public function GetDataForPages($conn = 'localhost') {
+		$connection = $this->Connect($conn);
+		
+		if($connection === TRUE) {
+			// Connection is good
+			$data['PlayerList'] = $this->GetPlayers();
+			$data['serverstats'] = $this->GetInfo();
+			$data['connection'] = TRUE;
+		} else {
+			// Handles Connection errors
+			$data['PlayerList'] = FALSE;
+			$data['serverstats'] = FALSE;
+			$data['connection'] = FALSE;
+			switch($connection) {
+				case(-3): {
+					$data['Error'] = "Failed to receive challenge.";
+				}
+				case(-2): {
+					$data['Error'] = "Failed to receive status.";
+				}
+				case(-1): {
+					$data['Error'] = "Can't open connection.";
+				}
+			}
+			$data['ErrorCode'] = $connection;
+		}
+		
+		return $data;
+	}
+	
 }

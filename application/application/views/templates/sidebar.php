@@ -1,15 +1,15 @@
 <div id="right-side">
-	<?php if($connection): //The server communicated properly?>
+	<?php if($ServerConn['connection']): //The server communicated properly?>
 	<div id="player-list">
 		<h2>Players Online</h2>
-		<p class="small-players"><?php echo $serverstats['Players']; ?>/<?php echo $serverstats["MaxPlayers"]; ?></p>
+		<p class="small-players"><?php echo $ServerConn['serverstats']['Players']; ?>/<?php echo $ServerConn['serverstats']["MaxPlayers"]; ?></p>
 		<ul>
-			<?php if(!$PlayerList): ?>
+			<?php if(!$ServerConn['PlayerList']): ?>
 			<li>There are no players online</li>
 			<?php 
 			else: 
-			natcasesort($PlayerList);
-			foreach ($PlayerList as $username): 
+			natcasesort($ServerConn['PlayerList']);
+			foreach ($ServerConn['PlayerList'] as $username): 
 			?>
 			<li><img class="playerFace" src="/dynmap/tiles/faces/16x16/<?php echo $username; ?>.png" alt="<?php echo $username; ?>'s Player Face" /> <?php echo $username; ?></li>
 			<?php 
@@ -24,7 +24,7 @@
 	<div id="sidebar-com-error">
 		<h2>Communication Error</h2>
 		<p class="message">We had trouble communicating with the Minecraft Server. You may need to refresh your browser or the server may be down.</p>
-		<p class="more-error-info">Error: <?php echo $ErrorCode; ?> <?php echo $Error; ?></p>	
+		<p class="more-error-info">Error: <?php echo $ServerConn['ErrorCode']; ?> <?php echo $ServerConn['Error']; ?></p>	
 	</div>
 	
 	<?php endif; ?>

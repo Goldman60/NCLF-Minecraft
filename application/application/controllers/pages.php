@@ -29,51 +29,25 @@ class Pages extends CI_Controller {
 			 array_push($data['style'], 'pages/'.$page);
 		}
 		// End page specifics
-		
-		$connection = $this->MC_stats_model->Connect('localhost');
-		
-		//Check server connection (NOTE: also implemented in news controller)
-		if($connection === TRUE) {
-			// Connection is good
-			$data['PlayerList'] = $this->MC_stats_model->GetPlayers();
-			$data['serverstats'] = $this->MC_stats_model->GetInfo();
-			$data['connection'] = TRUE;
-		} else {
-			// Handles Connection errors
-			$data['PlayerList'] = FALSE;
-			$data['serverstats'] = FALSE;
-			$data['connection'] = FALSE;
-			switch($connection) {
-				case(-3): {
-					$data['Error'] = "Failed to receive challenge.";
-				}
-				case(-2): {
-					$data['Error'] = "Failed to receive status.";
-				}
-				case(-1): {
-					$data['Error'] = "Can't open connection.";
-				}
-			}
-			$data['ErrorCode'] = $connection;
-		}
-		
+		$data['ServerConn'] = $this->MC_stats_model->GetDataForPages();
+				
 		//Header
-		$this->load->view('templates/header',$data);
+		$this->load->view('templates/header',$data);		
 		$this->load->view('templates/navigation',$data);
 		//Load up the body
 		$this->load->view('templates/body/start');
-		
+				
 		//If page is the stats page and there is no connection load error
-		if($page == 'stats' && !$data['connection']) {
+		if($page == 'stats' && !$data['ServerConn']['connection']) {
 			$this->load->view('templates/Error/Body-NoServer');
-		} else {
+		} else {				
 			$this->load->view('pages/'.$page, $data);
 		}
-		
 		//If page is not the stats page then load the sidebar
 		if($page != 'stats') {
 			$this->load->view('templates/sidebar');
 		}
+
 		//End the body
 		$this->load->view('templates/body/end', $data);
 		//footer
