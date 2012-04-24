@@ -6,6 +6,7 @@ class Player_stats_model extends CI_Model {
 
 	function __construct($playerUUID) {
 		$this->load->database();
+		$this->load->library('stats_utilities');
 		$this->_playerUUID = $playerUUID;
 		$this->popCheck();
 	}
@@ -90,7 +91,7 @@ class Player_stats_model extends CI_Model {
 	}
 
 	public function getPlayerBlockTable() {
-		return QueryUtils::get2DArrayFromQuery("SELECT block_id, num_destroyed, num_placed FROM blocks WHERE uuid = '{$this->_playerUUID}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT block_id, num_destroyed, num_placed FROM blocks WHERE uuid = '{$this->_playerUUID}'");
 	}
 
 	public function getBlocksMostDestroyed() {
@@ -137,7 +138,7 @@ class Player_stats_model extends CI_Model {
 	}
 
 	public function getPlayerPickupDropTable() {
-		return QueryUtils::get2DArrayFromQuery("SELECT item, num_pickedup, num_dropped FROM pickup_drop WHERE uuid = '{$this->_playerUUID}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT item, num_pickedup, num_dropped FROM pickup_drop WHERE uuid = '{$this->_playerUUID}'");
 	}
 
 	public function getMostPickedUp() {
@@ -163,7 +164,7 @@ class Player_stats_model extends CI_Model {
 	}
 
 	public function getPlayerKillTable() {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}'");
 	}
 
 	public function getMostDangerousWeapon() {
@@ -201,76 +202,76 @@ class Player_stats_model extends CI_Model {
 	}
 
 	public function getPlayerKillTablePVP($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$playerCreatureId = QueryUtils::getCreatureIdByName("Player");
+		$playerCreatureId = Stats_utilities::getCreatureIdByName("Player");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed = '{$playerCreatureId}' AND killed_by_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed = '{$playerCreatureId}' AND killed_by_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
 		else
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed = '{$playerCreatureId}' AND killed_by_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed = '{$playerCreatureId}' AND killed_by_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
 	}
 
 	public function getPlayerKillDeathTablePVP($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$playerCreatureId = QueryUtils::getCreatureIdByName("Player");
+		$playerCreatureId = Stats_utilities::getCreatureIdByName("Player");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed = '{$playerCreatureId}' AND killed_by = '{$playerCreatureId}') AND  (killed_by_uuid = '{$this->_playerUUID}' OR killed_uuid = '{$this->_playerUUID}') ORDER BY id DESC");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed = '{$playerCreatureId}' AND killed_by = '{$playerCreatureId}') AND  (killed_by_uuid = '{$this->_playerUUID}' OR killed_uuid = '{$this->_playerUUID}') ORDER BY id DESC");
 		else
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed = '{$playerCreatureId}' AND killed_by = '{$playerCreatureId}') AND  (killed_by_uuid = '{$this->_playerUUID}' OR killed_uuid = '{$this->_playerUUID}') ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed = '{$playerCreatureId}' AND killed_by = '{$playerCreatureId}') AND  (killed_by_uuid = '{$this->_playerUUID}' OR killed_uuid = '{$this->_playerUUID}') ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
 	}
 
 	public function getPlayerDeathTablePVP($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$playerCreatureId = QueryUtils::getCreatureIdByName("Player");
+		$playerCreatureId = Stats_utilities::getCreatureIdByName("Player");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by = '{$playerCreatureId}' AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by = '{$playerCreatureId}' AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
 		else
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by = '{$playerCreatureId}' AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by = '{$playerCreatureId}' AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
 	}
 
 	public function getPlayerKillTablePVE($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$playerCreatureId = QueryUtils::getCreatureIdByName("Player");
-		$noneCreatureId = QueryUtils::getCreatureIdByName("None");
+		$playerCreatureId = Stats_utilities::getCreatureIdByName("Player");
+		$noneCreatureId = Stats_utilities::getCreatureIdByName("None");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed != '{$playerCreatureId}' AND killed != '{$noneCreatureId}') AND killed_by_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed != '{$playerCreatureId}' AND killed != '{$noneCreatureId}') AND killed_by_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
 		else
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed != '{$playerCreatureId}' AND killed != '{$noneCreatureId}') AND killed_by_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed != '{$playerCreatureId}' AND killed != '{$noneCreatureId}') AND killed_by_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
 	}
 
 	public function getPlayerKillDeathTablePVE($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$playerCreatureId = QueryUtils::getCreatureIdByName("Player");
-		$noneCreatureId = QueryUtils::getCreatureIdByName("None");
-		$blockCreatureId = QueryUtils::getCreatureIdByName("Block");
+		$playerCreatureId = Stats_utilities::getCreatureIdByName("Player");
+		$noneCreatureId = Stats_utilities::getCreatureIdByName("None");
+		$blockCreatureId = Stats_utilities::getCreatureIdByName("Block");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE ((killed != '{$playerCreatureId}' AND killed != '{$noneCreatureId}') XOR (killed_by != '{$playerCreatureId}' AND killed_by != '{$noneCreatureId}' AND killed_by != '{$blockCreatureId}'))  AND (killed_by_uuid = '{$this->_playerUUID}' OR killed_uuid = '{$this->_playerUUID}' ) ORDER BY id DESC");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE ((killed != '{$playerCreatureId}' AND killed != '{$noneCreatureId}') XOR (killed_by != '{$playerCreatureId}' AND killed_by != '{$noneCreatureId}' AND killed_by != '{$blockCreatureId}'))  AND (killed_by_uuid = '{$this->_playerUUID}' OR killed_uuid = '{$this->_playerUUID}' ) ORDER BY id DESC");
 		else
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE ((killed != '{$playerCreatureId}' AND killed != '{$noneCreatureId}') XOR (killed_by != '{$playerCreatureId}' AND killed_by != '{$noneCreatureId}' AND killed_by != '{$blockCreatureId}'))  AND (killed_by_uuid = '{$this->_playerUUID}' OR killed_uuid = '{$this->_playerUUID}' ) ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE ((killed != '{$playerCreatureId}' AND killed != '{$noneCreatureId}') XOR (killed_by != '{$playerCreatureId}' AND killed_by != '{$noneCreatureId}' AND killed_by != '{$blockCreatureId}'))  AND (killed_by_uuid = '{$this->_playerUUID}' OR killed_uuid = '{$this->_playerUUID}' ) ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
 	}
 
 	public function getPlayerDeathTablePVE($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$playerCreatureId = QueryUtils::getCreatureIdByName("Player");
-		$noneCreatureId = QueryUtils::getCreatureIdByName("None");
-		$blockCreatureId = QueryUtils::getCreatureIdByName("Block");
+		$playerCreatureId = Stats_utilities::getCreatureIdByName("Player");
+		$noneCreatureId = Stats_utilities::getCreatureIdByName("None");
+		$blockCreatureId = Stats_utilities::getCreatureIdByName("Block");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed_by != '{$playerCreatureId}' AND killed_by != '{$noneCreatureId}' AND killed_by != '{$blockCreatureId}') AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed_by != '{$playerCreatureId}' AND killed_by != '{$noneCreatureId}' AND killed_by != '{$blockCreatureId}') AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
 		else
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed_by != '{$playerCreatureId}' AND killed_by != '{$noneCreatureId}' AND killed_by != '{$blockCreatureId}') AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed_by != '{$playerCreatureId}' AND killed_by != '{$noneCreatureId}' AND killed_by != '{$blockCreatureId}') AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
 	}
 
 	public function getPlayerDeathTableOther($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$noneCreatureId = QueryUtils::getCreatureIdByName("None");
-		$blockCreatureId = QueryUtils::getCreatureIdByName("Block");
+		$noneCreatureId = Stats_utilities::getCreatureIdByName("None");
+		$blockCreatureId = Stats_utilities::getCreatureIdByName("Block");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed = '{$noneCreatureId}' OR killed = '{$blockCreatureId}') XOR (killed_by = '{$noneCreatureId}' OR killed_by = '{$blockCreatureId}') AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed = '{$noneCreatureId}' OR killed = '{$blockCreatureId}') XOR (killed_by = '{$noneCreatureId}' OR killed_by = '{$blockCreatureId}') AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC");
 		else
-			return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed = '{$noneCreatureId}' OR killed = '{$blockCreatureId}') XOR (killed_by = '{$noneCreatureId}' OR killed_by = '{$blockCreatureId}') AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
+			return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE (killed = '{$noneCreatureId}' OR killed = '{$blockCreatureId}') XOR (killed_by = '{$noneCreatureId}' OR killed_by = '{$blockCreatureId}') AND killed_uuid = '{$this->_playerUUID}' ORDER BY id DESC LIMIT {$limitStart},{$limitNumber}");
 	}
 
 	public function getPlayerMostDangerousPVECreature() {
-		$ignoreID = QueryUtils::getCreatureIdByName("Player");
-		$noneID = QueryUtils::getCreatureIdByName("None");
-		$blockID = QueryUtils::getCreatureIdByName("Block");
+		$ignoreID = Stats_utilities::getCreatureIdByName("Player");
+		$noneID = Stats_utilities::getCreatureIdByName("None");
+		$blockID = Stats_utilities::getCreatureIdByName("Block");
 		 
 		$highest = 0;
 		$idOfHighest = 0;
 		 
-		foreach (QueryUtils::getCreatureTable() as $creatureRow) {
+		foreach (Stats_utilities::getCreatureTable() as $creatureRow) {
 
 			if ($creatureRow['id'] == $ignoreID) continue;
 			if ($creatureRow['id'] == $noneID) continue;
@@ -293,12 +294,12 @@ class Player_stats_model extends CI_Model {
 	}
 
 	public function getPlayerMostKilledPVECreature() {
-		$ignoreID = QueryUtils::getCreatureIdByName("Player");
-		$noneID = QueryUtils::getCreatureIdByName("None");
+		$ignoreID = Stats_utilities::getCreatureIdByName("Player");
+		$noneID = Stats_utilities::getCreatureIdByName("None");
 		$highest = 0;
 		$idOfHighest = 0;
 		 
-		foreach (QueryUtils::getCreatureTable() as $creatureRow) {
+		foreach (Stats_utilities::getCreatureTable() as $creatureRow) {
 
 			if ($creatureRow['id'] == $ignoreID) continue;
 			if ($creatureRow['id'] == $noneID) continue;
@@ -319,47 +320,47 @@ class Player_stats_model extends CI_Model {
 	}
 
 	public function getPlayerDeathTable() {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}'");
 	}
 
 	public function getPlayerKillPVP($uuid) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND killed_uuid = '{$uuid}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND killed_uuid = '{$uuid}'");
 	}
 
 	public function getPlayerDeathPVP($uuid) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND killed_by_uuid = '{$uuid}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND killed_by_uuid = '{$uuid}'");
 	}
 
 	public function getPlayerKillTableCreature($creatureTypeId) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND killed = '{$creatureTypeId}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND killed = '{$creatureTypeId}'");
 	}
 
 	public function getPlayerDeathTableCreature($creatureTypeId) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND killed_by = '{$creatureTypeId}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND killed_by = '{$creatureTypeId}'");
 	}
 
 	public function getPlayerKillTableType($killTypeId) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND kill_type = '{$killTypeId}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND kill_type = '{$killTypeId}'");
 	}
 
 	public function getPlayerDeathTableType($killTypeId) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND kill_type = '{$killTypeId}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND kill_type = '{$killTypeId}'");
 	}
 
 	public function getPlayerKillTableUsing($itemId) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND killed_using = '{$itemId}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND killed_using = '{$itemId}'");
 	}
 
 	public function getPlayerDeathTableUsing($itemId) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND killed_using = '{$itemId}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND killed_using = '{$itemId}'");
 	}
 
 	public function getPlayerKillTableProjectile($projectileId) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND killed_projectile = '{$projectilId}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_by_uuid = '{$this->_playerUUID}' AND killed_projectile = '{$projectilId}'");
 	}
 
 	public function getPlayerDeathTableProjectile($projectilId) {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND killed_projectile = '{$projectilId}'");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM kills WHERE killed_uuid = '{$this->_playerUUID}' AND killed_projectile = '{$projectilId}'");
 	}
 }
 

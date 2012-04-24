@@ -6,6 +6,7 @@ class Server_stats_model extends CI_Model {
 	 
 	function __construct() {
 		$this->load->database();
+		$this->load->library('stats_utilities');
 		$this->_serverRow = mysql_fetch_assoc(mysql_query('SELECT * FROM server'));
 		$this->_playerRow = mysql_fetch_assoc(mysql_query('SELECT SUM(num_logins) AS numLogin,
 				SUM(num_secs_loggedon) AS secLogin,
@@ -20,7 +21,7 @@ class Server_stats_model extends CI_Model {
 	}
 	 
 	public function getPlayer($uuid) {
-		return new PLAYER($uuid);
+		return new Player_stats_model($uuid);
 	}
 
 	public function getAllPlayers() {
@@ -44,9 +45,9 @@ class Server_stats_model extends CI_Model {
 
 	public function getPlayersTable($limit = false, $limitStart = 0, $limitNumber = 0) {
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM players ORDER BY player_name ASC');
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM players ORDER BY player_name ASC');
 		else
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM players ORDER BY player_name ASC LIMIT '.$limitStart.', '.$limitNumber);
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM players ORDER BY player_name ASC LIMIT '.$limitStart.', '.$limitNumber);
 	}
 
 	public function getUptimeInSeconds() {
@@ -105,12 +106,14 @@ class Server_stats_model extends CI_Model {
 		return $this->getDistanceTraveledTotal() -
 		($this->getDistanceTraveledByMinecartTotal() + $this->getDistanceTraveledByBoatTotal() + $this->getDistanceTraveledByPigTotal());
 	}
-
+	
+	//NOT IMPLEMENTES
 	public function getBlocksDestroyedOfTypeTotal($id) {
 		$row = mysql_fetch_assoc(mysql_query('SELECT SUM(num_destroyed) AS num_destroyed FROM blocks WHERE block_id = "'.$id.'"'));
 		return $row['num_destroyed'];
 	}
-
+	
+	//NOT IMPLEMENTED
 	public function getBlocksPlacedOfTypeTotal($id){
 		$row = mysql_fetch_assoc(mysql_query('SELECT SUM(num_placed) AS num_placed FROM blocks WHERE block_id = '.$id));
 		return $row['num_placed'];
@@ -123,7 +126,8 @@ class Server_stats_model extends CI_Model {
 	public function getBlocksPlacedTotal() {
 		return $this->_blockRow['placedTotal'];
 	}
-
+	
+	//NOT IMPLEMENTED
 	public function getBlocksMostDestroyed() {
 		$row = mysql_fetch_assoc(mysql_query('SELECT block_id,
 				SUM(num_destroyed) AS sum
@@ -133,6 +137,7 @@ class Server_stats_model extends CI_Model {
 		return $row['block_id'];
 	}
 
+	//NOT IMPLEMENTED
 	public function getBlocksMostPlaced() {
 		$row = mysql_fetch_assoc(mysql_query('SELECT block_id,
 				SUM(num_placed) AS sum
@@ -142,20 +147,24 @@ class Server_stats_model extends CI_Model {
 		return $row['block_id'];
 	}
 
+	//NOT IMPLEMENTED
 	public function getBlockTable() {
-		return QueryUtils::get2DArrayFromQuery('SELECT * FROM blocks');
+		return Stats_utilities::get2DArrayFromQuery('SELECT * FROM blocks');
 	}
-
+	
+	//NOT IMPLEMENTED
 	public function getPickedUpOfTypeTotal($id) {
 		$row = mysql_fetch_assoc(mysql_query('SELECT SUM(num_pickedup) AS num_pickedup FROM pickup_drop WHERE item = "'.$id.'"'));
 		return $row['num_pickedup'];
 	}
 
+	//NOT IMPLEMENTED
 	public function getDroppedOfTypeTotal($id) {
 		$row = mysql_fetch_assoc(mysql_query('SELECT SUM(num_dropped) AS num_dropped FROM pickup_drop WHERE item = "'.$id.'"'));
 		return $row['num_dropped'];
 	}
 
+	//NOT IMPLEMENTED
 	public function getPickedUpTotal() {
 		$row = mysql_fetch_assoc(mysql_query("SELECT SUM(num_pickedup) AS totalPickedup FROM pickup_drop"));
 		return $row['totalPickedup'];
@@ -185,7 +194,7 @@ class Server_stats_model extends CI_Model {
 	}
 
 	public function getPickupDropTable() {
-		return QueryUtils::get2DArrayFromQuery("SELECT * FROM pickup_drop");
+		return Stats_utilities::get2DArrayFromQuery("SELECT * FROM pickup_drop");
 	}
 
 	public function getTotalKills() {
@@ -195,9 +204,9 @@ class Server_stats_model extends CI_Model {
 
 	public function getKillTable($limit = false, $limitStart = 0, $limitNumber = 0) {
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills ORDER BY id DESC');
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills ORDER BY id DESC');
 		else
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills ORDER BY id DESC LIMIT '.$limitStart.', '.$limitNumber);
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills ORDER BY id DESC LIMIT '.$limitStart.', '.$limitNumber);
 	}
 
 	public function getTotalPVPKills() {
@@ -226,14 +235,14 @@ class Server_stats_model extends CI_Model {
 
 
 	public function getKillTablePVP($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$playerCreatureId = QueryUtils::getCreatureIdByName("Player");
+		$playerCreatureId = Stats_utilities::getCreatureIdByName("Player");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills
 					WHERE killed = "'.$playerCreatureId.'"
 					AND killed_by = "'.$playerCreatureId.'"
 					ORDER BY id DESC');
 		else
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills
 					WHERE killed = "'.$playerCreatureId.'"
 					AND killed_by = "'.$playerCreatureId.'"
 					ORDER BY id DESC LIMIT '.$limitStart.', '.$limitNumber);
@@ -273,11 +282,11 @@ class Server_stats_model extends CI_Model {
 	}
 
 	public function getKillTablePVE($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$playerCreatureId = QueryUtils::getCreatureIdByName("Player");
-		$noneCreatureId = QueryUtils::getCreatureIdByName("None");
-		$blockCreatureId = QueryUtils::getCreatureIdByName("Block");
+		$playerCreatureId = Stats_utilities::getCreatureIdByName("Player");
+		$noneCreatureId = Stats_utilities::getCreatureIdByName("None");
+		$blockCreatureId = Stats_utilities::getCreatureIdByName("Block");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills
 					WHERE (killed != "'.$playerCreatureId.'"
 					AND killed != "'.$noneCreatureId.'"
 					AND killed != "'.$blockCreatureId.'")
@@ -286,7 +295,7 @@ class Server_stats_model extends CI_Model {
 					AND killed_by != "'.$blockCreatureId.'")
 					ORDER BY id DESC');
 		else
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills
 					WHERE (killed != "'.$playerCreatureId.'"
 					AND killed != "'.$noneCreatureId.'"
 					AND killed != "'.$blockCreatureId.'")
@@ -317,17 +326,17 @@ class Server_stats_model extends CI_Model {
 	}
 
 	public function getKillTableOther($limit = false, $limitStart = 0, $limitNumber = 0) {
-		$noneCreatureId = QueryUtils::getCreatureIdByName("None");
-		$blockCreatureId = QueryUtils::getCreatureIdByName("Block");
+		$noneCreatureId = Stats_utilities::getCreatureIdByName("None");
+		$blockCreatureId = Stats_utilities::getCreatureIdByName("Block");
 		if (!$limit)
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills
 					WHERE (killed = "'.$noneCreatureId.'"
 					OR killed = "'.$blockCreatureId.'")
 					XOR (killed_by = "'.$noneCreatureId.'"
 					OR killed_by = "'.$blockCreatureId.'")
 					ORDER BY id DESC');
 		else
-			return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills
+			return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills
 					WHERE (killed = "'.$noneCreatureId.'"
 					OR killed = "'.$blockCreatureId.'")
 					XOR (killed_by = "'.$noneCreatureId.'"
@@ -398,23 +407,23 @@ class Server_stats_model extends CI_Model {
 	}
 
 	public function getKillTableCreature($creatureTypeId) {
-		return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills WHERE killed_by = "'.$creatureTypeId.'"');
+		return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills WHERE killed_by = "'.$creatureTypeId.'"');
 	}
 
 	public function getDeathTableCreature($creatureTypeId) {
-		return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills WHERE killed = '.$creatureTypeId.'"');
+		return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills WHERE killed = '.$creatureTypeId.'"');
 	}
 
 	public function getKillTableType($killTypeId) {
-		return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills WHERE kill_type = '.$killTypeId.'"');
+		return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills WHERE kill_type = '.$killTypeId.'"');
 	}
 
 	public function getKillTableUsing($itemId) {
-		return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills WHERE killed_using = "'.$itemId.'"');
+		return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills WHERE killed_using = "'.$itemId.'"');
 	}
 
 	public function getKillTableProjectile($projectileId) {
-		return QueryUtils::get2DArrayFromQuery('SELECT * FROM kills WHERE killed_projectile = "'.$projectilId.'"');
+		return Stats_utilities::get2DArrayFromQuery('SELECT * FROM kills WHERE killed_projectile = "'.$projectilId.'"');
 	}
 
 }

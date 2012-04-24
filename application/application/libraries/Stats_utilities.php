@@ -6,9 +6,7 @@ class Stats_utilities {
 	const CLOCK_24 = 'M jS Y\, H:i:s';
 	
 	public function __construct() {
-		$this->ci =& get_instance();
-		$this->ci->load->model('player_stats_model');
-		$this->ci->load->model('server_stats_model');		
+		$this->ci =& get_instance();	
 	}
 
 	static function get2DArrayFromQuery($queryString) {
