@@ -4,10 +4,10 @@ class Statistics extends CI_Controller {
 	public function __construct() {
 		parent::__construct();		
 		$this->load->model('MC_stats_model');
+		$this->load->model('server_stats_model');
 	}
 	
 	public function index() {
-		$this->load->model('server_stats_model');
 		
 		$data['serverStats']['maxPlayers'] = $this->server_stats_model->getMaxPlayersEverOnline();
 		$data['serverStats']['maxPlayersDate'] = $this->server_stats_model->getMaxPlayersEverOnlineTimeWhenOccured();
@@ -38,15 +38,12 @@ class Statistics extends CI_Controller {
 	}
 	
 	public function player($uuid) {	
-		echo 'Player stats uuid ';
-		echo $uuid;
-		$this->load->model('server_stats_model');
 		$this->load->model('player_stats_model');
 		
 		$data['playerData'] = $this->server_stats_model->getPlayer($uuid);
 		
 		var_dump($data);
-		$this->load->view('templates/header');
-		$this->load->view('templates/footer');
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/footer', $data);
 	}
 }
