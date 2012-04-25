@@ -37,16 +37,10 @@ class Pages extends CI_Controller {
 		//Load up the body
 		$this->load->view('templates/body/start');
 				
-		//If page is the stats page and there is no connection load error
-		if($page == 'stats' && !$data['ServerConn']['connection']) {
-			$this->load->view('templates/Error/Body-NoServer');
-		} else {				
-			$this->load->view('pages/'.$page, $data);
-		}
-		//If page is not the stats page then load the sidebar
-		if($page != 'stats') {
-			$this->load->view('templates/sidebar');
-		}
+		$this->load->view('pages/'.$page, $data);
+		
+		//load the sidebar
+		$this->load->view('templates/sidebar');
 
 		//End the body
 		$this->load->view('templates/body/end', $data);

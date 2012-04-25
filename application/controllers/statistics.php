@@ -34,7 +34,7 @@ class Statistics extends CI_Controller {
 		//Uses MC_Stats_models
 		$data['ServerConn'] = $this->MC_stats_model->GetDataForPages();
 				
-		$data['style'] = array('SiteWide','Header','Navigation','Body','Footer','RightSide');
+		$data['style'] = array('SiteWide','Header','Navigation','Body','Footer','RightSide','Pages/stats');
 		$data['script'] = array();
 		
 		var_dump($data);
