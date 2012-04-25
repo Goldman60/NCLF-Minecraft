@@ -27,20 +27,45 @@ class Statistics extends CI_Controller {
 		$data['serverStats']['totalKills'] = $this->server_stats_model->getTotalKills();
 		$data['serverStats']['totalPvP'] = $this->server_stats_model->getTotalPVPKills();
 		$data['serverStats']['allPlayers'] = $this->server_stats_model->getPlayersTable();
-		
+		$data['serverStats']['allOnline'] = $this->server_stats_model->getAllPlayersOnline();
+
+		$data['title'] = "Statistics";
 		
 		//Uses MC_Stats_models
-		$data["ServerConn"] = $this->MC_stats_model->GetDataForPages();
+		$data['ServerConn'] = $this->MC_stats_model->GetDataForPages();
+				
+		$data['style'] = array('SiteWide','Header','Navigation','Body','Footer','RightSide');
+		$data['script'] = array();
 		
 		var_dump($data);
-		$this->load->view('templates/header');
-		$this->load->view('templates/footer');
+
+		//Header
+		$this->load->view('templates/header',$data);
+		$this->load->view('templates/navigation',$data);
+		//Load up the body
+		$this->load->view('templates/body/start');
+		
+		echo 'test';
+		
+		if(!$data['ServerConn']['connection']) {
+			$this->load->view('templates/Error/Body-NoServer');
+		} else {
+			$this->load->view('stats/index', $data);
+		}
+		
+		//End the body
+		$this->load->view('templates/body/end', $data);
+		//footer
+		$this->load->view('templates/footer', $data);
+		
 	}
 	
 	public function player($uuid) {	
 		$this->load->model('player_stats_model');
 		
 		$data['playerData'] = $this->server_stats_model->getPlayer($uuid);
+		
+		$data['title'] = $data['playerData']->getName()."'s Statistics";
 		
 		var_dump($data);
 		$this->load->view('templates/header', $data);

@@ -5,7 +5,7 @@
 	
 	<div id="infoMessage"><?php echo $message;?></div>
 	
-	<table cellpadding=0 cellspacing=10>
+	<table>
 		<tr>
 			<th>First Name</th>
 			<th>Last Name</th>

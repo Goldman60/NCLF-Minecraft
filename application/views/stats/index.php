@@ -35,6 +35,15 @@ if($ServerConn['connection']):?>
 	</ul>
 </div>
 
+<div id="AllPlayers">
+	<h2>All Players</h2>
+	<ul>
+		<?php foreach($serverStats['allPlayers'] as $player): ?>
+		<li><a href="/statistics/<?php echo $player['uuid']; ?>.html"><?php echo $player['player_name']; ?></a></li>
+		<?php endforeach; ?>
+	</ul>
+</div> 
+
 <div id="serverPlugins">
 	<h2>Server Plugins</h2>
 	<ul class="plugin-list">
