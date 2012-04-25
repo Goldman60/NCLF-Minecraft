@@ -47,7 +47,7 @@ class Statistics extends CI_Controller {
 		
 		echo 'test';
 		
-		if(!$data['ServerConn']['connection']) {
+		if(!$data['ServerConn']['connection']) { 
 			$this->load->view('templates/Error/Body-NoServer');
 		} else {
 			$this->load->view('stats/index', $data);
@@ -65,8 +65,13 @@ class Statistics extends CI_Controller {
 		
 		$data['playerData'] = $this->server_stats_model->getPlayer($uuid);
 		
-		$data['title'] = $data['playerData']->getName()."'s Statistics";
+		//Does player exsist?
+		if(!$data['playerData']->getName()) {
+			show_404();
+		}
 		
+		$data['title'] = $data['playerData']->getName()."'s Statistics";
+
 		var_dump($data);
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/footer', $data);
