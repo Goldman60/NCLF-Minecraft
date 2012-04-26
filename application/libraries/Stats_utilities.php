@@ -117,21 +117,21 @@ class Stats_utilities {
 		$seconds = intval($ns % 60);
 
 		if($years > 0) {
-			$time .= $years . ' ' . STRING_TIME_YEARS_ABV . ' ';
+			$time .= $years . ' Years ';
 		}
 
 		if($days > 0) {
-			$time .= $days . ' ' . STRING_TIME_DAYS_ABV . ' ';
+			$time .= $days . ' Days ';
 		}
 
 		if($hours > 0) {
-			$time .= $hours . ' ' . STRING_TIME_HOURS_ABV . ' ';
+			$time .= $hours . ' Hours ';
 		}
 		if($minutes > 0) {
-			$time .= $minutes . ' ' . STRING_TIME_MINUTES_ABV . ' ';
+			$time .= $minutes . ' Mins ';
 		}
 		if($seconds > 0) {
-			$time .= $seconds . ' ' . STRING_TIME_SECONDS_ABV . ' ';
+			$time .= $seconds . ' Secs ';
 		}
 
 		return $time;

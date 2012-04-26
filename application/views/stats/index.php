@@ -23,24 +23,32 @@ if($ServerConn['connection']):?>
 		<li>There are no players online</li>
 		<?php 
 			else: 
-			natcasesort($ServerConn['PlayerList']);
-			foreach ($ServerConn['PlayerList'] as $username): 
+			foreach($serverStats['allPlayers'] as $player):
+				if($player['online'] == 'Y'):
 		?>
 		
-		<li><img class="playerFace" src="/dynmap/tiles/faces/16x16/<?php echo $username; ?>.png" alt="<?php echo $username; ?>'s Player Face" /> <?php echo $username; ?></li>
+		<li><a href="/statistics/<?php echo $player['uuid']; ?>.html"><img class="playerFace" src="/dynmap/tiles/faces/16x16/<?php echo $player['player_name']; ?>.png" alt="<?php echo $player['player_name']; ?>'s Player Face" /> <?php echo $player['player_name']; ?></a></li>
 		<?php 
+				endif;
 			endforeach;
 			endif; 
 		?>
 	</ul>
 </div>
 
-<div id="AllPlayers">
-	<h2>All Players</h2>
+<div id="OfflinePlayers">
+	<h2>Offline Players</h2>
 	<ul>
-		<?php foreach($serverStats['allPlayers'] as $player): ?>
-		<li><a href="/statistics/<?php echo $player['uuid']; ?>.html"><?php echo $player['player_name']; ?></a></li>
-		<?php endforeach; ?>
+		<?php 
+			foreach($serverStats['allPlayers'] as $player): 
+			if($player['online'] == 'N'):
+		?>
+		
+		<li><a href="/statistics/<?php echo $player['uuid']; ?>.html"><img class="playerFace" src="/dynmap/tiles/faces/16x16/<?php echo $player['player_name']; ?>.png" alt="<?php echo $player['player_name']; ?>'s Player Face" /> <?php echo $player['player_name']; ?></a></li>
+		<?php 
+			endif;
+			endforeach; 
+		?>
 	</ul>
 </div> 
 

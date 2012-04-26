@@ -3,6 +3,7 @@ class Statistics extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();		
+		define("DATE_TIME", 'M j\, Y\, h:i:s a \(T\)');
 		$this->load->model('server_stats_model');
 	}
 	
@@ -27,7 +28,6 @@ class Statistics extends CI_Controller {
 		$data['serverStats']['totalKills'] = $this->server_stats_model->getTotalKills();
 		$data['serverStats']['totalPvP'] = $this->server_stats_model->getTotalPVPKills();
 		$data['serverStats']['allPlayers'] = $this->server_stats_model->getPlayersTable();
-		//$data['serverStats']['allOnline'] = $this->server_stats_model->getAllPlayersOnline();
 
 		$data['title'] = "Statistics";
 		
@@ -75,7 +75,10 @@ class Statistics extends CI_Controller {
 		$data['style'] = array('SiteWide','Header','Navigation','Body','Footer','RightSide','Pages/stats');
 		$data['script'] = array();
 		
-		var_dump($data);
+		//Pre formatting player stats to reduce code in view
+		$data['playerPre']['online'] = $this->stats_utilities->formatSecs($data['playerData']->getNumberOfSecondsLoggedOn());
+		
+		//var_dump($data);
 		
 		//Header
 		$this->load->view('templates/header',$data);
@@ -83,10 +86,10 @@ class Statistics extends CI_Controller {
 		//Load up the body
 		$this->load->view('templates/body/start');
 
-		$this->load->view('stats/player');
+		$this->load->view('stats/player', $data);
 		
 		//End the body
-		$this->load->view('templates/body/end', $data);
+		$this->load->view('templates/body/end');
 		//footer
 		$this->load->view('templates/footer', $data);
 	}
