@@ -3,12 +3,12 @@ class Statistics extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();		
-		$this->load->model('MC_stats_model');
 		$this->load->model('server_stats_model');
 	}
 	
 	public function index() {
-		
+		$this->load->model('MC_stats_model');
+				
 		$data['serverStats']['maxPlayers'] = $this->server_stats_model->getMaxPlayersEverOnline();
 		$data['serverStats']['maxPlayersDate'] = $this->server_stats_model->getMaxPlayersEverOnlineTimeWhenOccured();
 		$data['serverStats']['totalJoins'] = $this->server_stats_model->getNumberOfLoginsTotal();
@@ -27,7 +27,7 @@ class Statistics extends CI_Controller {
 		$data['serverStats']['totalKills'] = $this->server_stats_model->getTotalKills();
 		$data['serverStats']['totalPvP'] = $this->server_stats_model->getTotalPVPKills();
 		$data['serverStats']['allPlayers'] = $this->server_stats_model->getPlayersTable();
-		$data['serverStats']['allOnline'] = $this->server_stats_model->getAllPlayersOnline();
+		//$data['serverStats']['allOnline'] = $this->server_stats_model->getAllPlayersOnline();
 
 		$data['title'] = "Statistics";
 		
@@ -72,8 +72,22 @@ class Statistics extends CI_Controller {
 		
 		$data['title'] = $data['playerData']->getName()."'s Statistics";
 
+		$data['style'] = array('SiteWide','Header','Navigation','Body','Footer','RightSide','Pages/stats');
+		$data['script'] = array();
+		
 		var_dump($data);
-		$this->load->view('templates/header', $data);
+		
+		//Header
+		$this->load->view('templates/header',$data);
+		$this->load->view('templates/navigation',$data);
+		//Load up the body
+		$this->load->view('templates/body/start');
+
+		$this->load->view('stats/player');
+		
+		//End the body
+		$this->load->view('templates/body/end', $data);
+		//footer
 		$this->load->view('templates/footer', $data);
 	}
 }
