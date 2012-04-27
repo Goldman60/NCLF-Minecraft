@@ -37,16 +37,16 @@ class Statistics extends CI_Controller {
 		$data['style'] = array('SiteWide','Header','Navigation','Body','Footer','RightSide','Pages/stats');
 		$data['script'] = array();
 		
+		echo '<!-- DEBUG ARRAY'."\r\n";
 		var_dump($data);
+		echo '-->'."\r\n";
 
 		//Header
 		$this->load->view('templates/header',$data);
 		$this->load->view('templates/navigation',$data);
 		//Load up the body
 		$this->load->view('templates/body/start');
-		
-		echo 'test';
-		
+				
 		if(!$data['ServerConn']['connection']) { 
 			$this->load->view('templates/Error/Body-NoServer');
 		} else {
