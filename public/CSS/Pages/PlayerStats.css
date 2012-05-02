@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/* Page header */
+h2 {
+	margin:0;
+	padding-top:5px;
+}
+
+/* Note below page header */
+.SubStats {
+	font-size:12px;
+	color: #B5B5B5;
+	margin:2px 0;
+}
+
+/* Online/Offline Switch */
+.online {
+	border: solid 2px #0F0;
+	background-color: #93EEAA;
+}
+
+.offline {
+	border: solid 2px #F00;
+	background-color:#FF8A8A;
+}
+
+/* Distance travelled box */
+#DistanceTravelled {
+	margin-top: 3px;
+}
+
+#DistanceTravelled table, #DistanceTravelled td, #DistanceTravelled th  {
+	border: 1px #000 solid;
+	margin:0;
+}
+
+#DistanceTravelled table {
+	border-collapse: collapse;
+}

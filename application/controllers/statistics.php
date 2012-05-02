@@ -72,7 +72,7 @@ class Statistics extends CI_Controller {
 		
 		$data['title'] = $data['playerData']->getName()."'s Statistics";
 
-		$data['style'] = array('SiteWide','Header','Navigation','Body','Footer','RightSide','Pages/stats');
+		$data['style'] = array('SiteWide','Header','Navigation','Body','Footer','RightSide','Pages/stats','Pages/PlayerStats');
 		$data['script'] = array();
 		
 		//Pre formatting player stats to reduce code in view
