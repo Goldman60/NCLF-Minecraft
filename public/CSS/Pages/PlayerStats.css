@@ -6,6 +6,11 @@ h2 {
 	padding-top:5px;
 }
 
+h3 {
+	margin:4px 0 0 0;
+	text-align:center;
+}
+
 /* Note below page header */
 .SubStats {
 	font-size:12px;
@@ -26,14 +31,44 @@ h2 {
 
 /* Distance travelled box */
 #DistanceTravelled {
-	margin-top: 3px;
+	float:left;
+	width:209px;
+	border: 3px #000 solid;
+	border-radius:6px;
+	padding:0 4px 4px 11px;
+	margin: 5px;
 }
-
 #DistanceTravelled table, #DistanceTravelled td, #DistanceTravelled th  {
 	border: 1px #000 solid;
-	margin:0;
+}
+
+#DistanceTravelled td {
+	padding:3px;
+}
+
+#DistanceTravelled tfoot {
+	font-weight: bold;
 }
 
 #DistanceTravelled table {
 	border-collapse: collapse;
 }
+
+/* Blocks */
+#Blocks {
+	float:left;
+	width: 200px;
+	border:3px solid #000;
+	margin:5px;
+	border-radius:6px;
+}
+
+/* Detailed Block Placement */
+#DetailedBlock {
+	float:left;
+	width:260px;
+	border:3px solid #000;
+	margin:5px;
+	border-radius:6px;
+}
+
